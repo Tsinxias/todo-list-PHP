@@ -1,0 +1,22 @@
+[
+  {
+    "task" : "Feed the tomato",
+    "status" : "todo"
+  },
+  {
+    "task" : "Another task",
+    "status" : "todo"
+  },
+  {
+    "task" : "And another one",
+    "status" : "todo"
+  },
+  {
+    "task" : "AND ANOTHER ONE",
+    "status" : "todo"
+  },
+  {
+    "task" : "Tomato the feed",
+    "status" : "done"
+  }
+]
