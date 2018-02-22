@@ -1,10 +1,3 @@
-<?php
-  $addTask = $_POST["addTask"];
-  echo $addTask;
-?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,30 +11,74 @@
     <h3>A FAIRE</h3>
 
     <?php
-
+    $post = $_POST['addTask'];
     $url = 'todo.json';
     $data = file_get_contents($url);
     $tasks = json_decode($data);
 
     foreach ($tasks as $key => $value) {
       if ($value->status == "todo") {
-        echo "<input class='checking' type='checkbox'>" . $value->task . "<br>" . "<br>";
+        echo "<input class='checking' type='checkbox', name='name', value='value'>" . $value->task . "<br>" . "<br>";
       }
     }
 
-
-
+    function addJson () {
+      if (empty($_POST['addTask'])) {
+      } else {
+        if (file_exists('todo.json')) {
+          $current_data = file_get_contents('todo.json');
+          $array_data = json_decode($current_data, true);
+          $adds = array(
+            'task' => $_POST['addTask'],
+            'status' => 'todo'
+          );
+          $array_data[] = $adds;
+          $final_data = json_encode($array_data);
+          file_put_contents('todo.json', $final_data);
+          header("Refresh:0");
+        } else {
+          echo "no file";
+        }
+      }
+    }
+    addJson();
     ?>
+  <input id="register" type="submit" name="saveArchive" value="Enregistrer">
+  <h3>ARCHIVE</h3>
 
-    <input id="register" type="submit" name="" value="Enregistrer">
-    <h3>ARCHIVE</h3>
+
     <?php
+    $setArchive = $_POST['setArchive'];
+
     foreach ($tasks as $key => $value) {
       if ($value->status == "done") {
-        echo "<input type='checkbox' checked>" . $value->task . "<br>" . "<br>";
+        echo "<input type='checkbox' checked onclick='return false;'>" . $value->task . "<br>" . "<br>";
       }
     }
+
+    // function archive($buttonPressed){
+    //   foreach ($tasks as $key => $value) {
+    //     if (empty($_POST['name'])) {
+    //       echo "not checked";
+    //     } else {
+    //       echo "checked";
+    //     }
+    //   }
+    // } archive($_POST['setArchive']);
+
+
+
+    // function archive () {
+    //   if (isset($_POST['test'])) {
+    //     echo "123";
+    //   }
+    // }
+    //
+    // if (isset($setArchive)) {
+    //   archive();
+    // }
     ?>
+
   </div>
 
 
