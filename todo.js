@@ -24,6 +24,29 @@
 //   console.log($("input:checked").val());
 // });
 
-let array = $("input[name='name']:checked").map(function(){
-  return this.value;
-}).get();
+// let array = $("input[name='name']:checked").map(function(){
+//   return this.value;
+// }).get();
+
+// let ajax = new XMLHttpRequest();
+// ajax.open("GET", "todo.json", true);
+// ajax.send(null);
+//
+// let checkers = document.getElementById("checkers").children;
+//
+//
+// $("#register").on("click", function() {
+//   let data = ajax.responseText;
+//   let dataObject = JSON.parse(data);
+//   let inputChecked = $('input:checked');
+//
+//   for (var i = 0; i < checkers.length; i++) {
+//     if ($("#checkers input:checked").val()) {
+//       console.log(dataObject);
+//
+//
+//       dataObject[i]["status"] = "done";
+//       console.log(inputChecked[i].value);
+//     }
+//   }
+// });
